@@ -1,0 +1,97 @@
+{% comment %}
+  Hero Cinematic Section
+{% endcomment %}
+<section class="hero-cinematic" data-section-id="{{ section.id }}">
+  <div class="hero-cinematic__media" {% if section.settings.background_image != blank %}style="background-image: url('{{ section.settings.background_image | image_url: width: 2400 }}');"{% endif %}>
+    <div class="hero-cinematic__overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"></div>
+  </div>
+
+  <div class="hero-cinematic__inner page-width text-{{ section.settings.text_alignment }}">
+    {% if section.settings.eyebrow != blank %}
+      <p class="hero-cinematic__eyebrow">{{ section.settings.eyebrow }}</p>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+      <h1 class="hero-cinematic__heading">{{ section.settings.heading }}</h1>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+      <p class="hero-cinematic__subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <a class="hero-cinematic__button" href="{{ section.settings.button_link }}">
+        {{ section.settings.button_label }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero (Cinematic)",
+  "tag": "section",
+  "class": "section-hero-cinematic",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Digital Goods"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "ILL CONTENT"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Cinematic templates, legal filings, and art products built for serious creators."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "default": 35
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero (Cinematic)"
+    }
+  ]
+}
+{% endschema %}
