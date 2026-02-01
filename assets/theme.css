@@ -1,0 +1,215 @@
+:root {
+  --color-bg: #0b0b10;
+  --color-surface: #12121a;
+  --color-text: #f5f5f7;
+  --color-muted: #b9bcc7;
+  --color-accent: #d4b46a;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --font-heading: "Cinzel", serif;
+  --font-body: "Inter", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+}
+
+.page-width {
+  width: min(1200px, 90vw);
+  margin: 0 auto;
+}
+
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip-to-content:focus {
+  left: 16px;
+  top: 16px;
+  background: #fff;
+  color: #000;
+  padding: 8px 12px;
+  z-index: 10;
+}
+
+.hero-cinematic {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-cinematic__media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: #1a1a24;
+}
+
+.hero-cinematic__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 6, 10, 0.25) 0%, rgba(6, 6, 10, 0.85) 100%);
+}
+
+.hero-cinematic__inner {
+  position: relative;
+  z-index: 2;
+  padding: 96px 0;
+}
+
+.hero-cinematic__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.hero-cinematic__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  margin: 16px 0;
+  letter-spacing: 0.08em;
+}
+
+.hero-cinematic__subheading {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  max-width: 640px;
+  margin: 0 auto 32px;
+  color: var(--color-muted);
+}
+
+.hero-cinematic__button {
+  display: inline-block;
+  padding: 14px 32px;
+  border: 1px solid var(--color-accent);
+  color: var(--color-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hero-cinematic__button:hover {
+  transform: translateY(-2px);
+  background: rgba(212, 180, 106, 0.12);
+}
+
+.flip-card-grid {
+  padding: 80px 0;
+  background: var(--color-surface);
+}
+
+.flip-card-grid__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.flip-card-grid__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  margin: 0 0 8px;
+}
+
+.flip-card-grid__subtitle {
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.flip-card-grid__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.flip-card {
+  perspective: 1200px;
+}
+
+.flip-card__inner {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.flip-card.is-flipped .flip-card__inner,
+.flip-card:focus-within .flip-card__inner,
+.flip-card:hover .flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card__face {
+  position: absolute;
+  inset: 0;
+  background: #0e0e15;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flip-card__face--back {
+  transform: rotateY(180deg);
+  background: #14141f;
+}
+
+.flip-card__image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.flip-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  margin: 0 0 8px;
+}
+
+.flip-card__text {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.flip-card__button {
+  margin-top: 16px;
+  align-self: flex-start;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.flip-card.reduced-motion .flip-card__inner {
+  transition: none;
+}
+
+@media (max-width: 768px) {
+  .hero-cinematic__inner {
+    padding: 72px 0;
+  }
+
+  .flip-card__inner {
+    min-height: 280px;
+  }
+}
